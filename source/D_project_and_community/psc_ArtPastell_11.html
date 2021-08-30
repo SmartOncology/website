@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vectorized code &#8212; SmartOncology</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/SmartOncoLogo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The steps to compute" href="psc_midpoint_1D_14.html" />
+    <link rel="prev" title="Create your own NACA airfoil profile" href="../C_technical_manual/cfd-03-grids-for-airfoils.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/SmartOncoLogo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SmartOncology</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   SmartOncology
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  1 - Overview
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../A_overviews/psc_Recaman_Sequ_01.html">
+   Recamán’s sequence - Logo of SmartOncology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../A_overviews/psc_1dim_grid_.html">
+   Important ressources
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  2 - User manual
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../B_user_manual/psc_matterhorn_evaluate_14.html">
+   The information we have: a digital elevation model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../B_user_manual/cfd-01-rectangular-grid-genereation-python.html">
+   Aequidistant rectangular grids
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../B_user_manual/cfd-02-body-fitted-grid-genereation-python.html">
+   Python code for a terrain-following grid
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  3 - Technical manual
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C_technical_manual/psc_interpolation_20.html">
+   Types and test cases in 2-dimensional space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../C_technical_manual/cfd-03-grids-for-airfoils.html">
+   Create your own NACA airfoil profile
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  4 - Project and community
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Vectorized code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="psc_midpoint_1D_14.html">
+   The steps to compute
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Visit our <a href="https://github.com/SmartOncology/Manuals-v0.1/">GitHub Repository</a><div> This book is powered by <a href="https://jupyterbook.org">Jupyter Book</a></div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/source/D_project_and_community/psc_ArtPastell_11.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SmartOncology/Manuals-v0.1/master?urlpath=tree/source/D_project_and_community/psc_ArtPastell_11.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Vectorized code
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-with-for-loops">
+   Code with for-loops
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-the-speed">
+   Comparing the speed
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Title: An accelerated generator of pastel canvas
+Date: 2018-10-01 14:40
+Category: GenerativeArt
+Tags: Python
+Slug: accelerated-pastel-art-with-python
+Cover: /posts/img4000/output_3_0.png
+Authors: Peter Schuhmacher
+Summary: We try a beautiful art engine and use vectorized forms to accelerate the execution.</p>
+<p>We have found in <a class="reference external" href="https://scipython.com/blog/computer-generated-contemporary-art/">this inspiring blog post</a> a lean engine that generates smart pastel canvas.</p>
+<p>The algorithm starts at the left boundary where the first column is initiated with a color that oscillates randomly around a certain value. The algorithm marches now through the canvas to the right. Each pixel within a new column is computed as the mean value of the three nearest neighbouring pixels of the left column - and a certain amount of random noise is added at this step.</p>
+<p>The results are images with a lot of atmospheric flair.</p>
+<div class="section" id="vectorized-code">
+<h1>Vectorized code<a class="headerlink" href="#vectorized-code" title="Permalink to this headline">¶</a></h1>
+<p>We have modified the original code and replaced the two outer for-loops by vectorized forms. We use Python’s <em>slice</em>-forms which allow for a lean writing of the array’s indices and still give a fast access to the elements of the array. We have tested that earlier <a class="reference external" href="https://stackoverflow.com/questions/45290102/is-2-dimensional-numpy-take-fast/45296732#45296732">here</a>.</p>
+<p>Further we have split the initialisation into a lower and an upper part. So we get a landscape/atmosphere impression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mclr</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw_pastell</span><span class="p">(</span><span class="n">nx</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">1600</span><span class="p">,</span> <span class="n">CL</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">rshift</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">nz</span><span class="o">=</span><span class="mi">3</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="n">nx</span><span class="o">//</span><span class="mi">2</span>
+    <span class="n">dCL</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="c1">#---- start the coloring ----------</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">))</span> <span class="o">*</span><span class="n">CL</span>           <span class="c1"># initialize the image matrix</span>
+    <span class="c1">#np.random.seed(1234)                  # initialize RNG</span>
+    
+    <span class="c1">#---- initialize the lower part ----</span>
+    <span class="n">ix</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mid</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>   <span class="n">iz</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nz</span><span class="p">)</span>  <span class="c1"># color the left boundary</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">iz</span><span class="p">]</span> <span class="o">=</span>  <span class="n">CL</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="n">rshift</span><span class="p">,</span> <span class="n">rshift</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">mid</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">nz</span><span class="p">)),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span>
+    
+    <span class="c1">#---- initialize the upper part ----</span>
+    <span class="n">ix</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span><span class="n">nx</span><span class="p">);</span>   <span class="n">iz</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nz</span><span class="p">)</span>  <span class="c1"># color the left boundary</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">iz</span><span class="p">]</span> <span class="o">=</span>  <span class="n">CL</span><span class="o">-</span><span class="n">dCL</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="n">rshift</span><span class="p">,</span> <span class="n">rshift</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="n">mid</span><span class="p">,</span><span class="n">nz</span><span class="p">)),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span>
+    
+    <span class="c1">#---- march to the right boundary -------------</span>
+    <span class="n">ix</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="n">ixm</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span> <span class="n">ixp</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">nx</span><span class="p">)</span> 
+    <span class="k">for</span> <span class="n">jy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ny</span><span class="p">):</span>                <span class="c1"># smear the color to the right boundary</span>
+        <span class="n">A</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span><span class="n">jy</span><span class="p">,</span><span class="n">iz</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3333</span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">ixm</span><span class="p">,</span><span class="n">jy</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">iz</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span><span class="n">jy</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">iz</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">ixp</span><span class="p">,</span><span class="n">jy</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">iz</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="n">rshift</span><span class="p">,</span> <span class="n">rshift</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="n">nz</span><span class="p">))</span>
+    
+    <span class="c1">#---- show&amp;save grafics ---------</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">14</span><span class="p">));</span>
+    <span class="n">fileName</span> <span class="o">=</span> <span class="s1">&#39;pic_pastell_B_</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">CL</span><span class="p">,</span><span class="n">rshift</span><span class="p">)</span>
+    <span class="c1">#im.save(fileName)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+
+
+   <span class="c1"># nx, ny :   size of image (x,y)</span>
+   <span class="c1"># CL     :   color level</span>
+   <span class="c1"># rshift :   spread of random numbers</span>
+<span class="n">draw_pastell</span><span class="p">(</span><span class="n">nx</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">1600</span><span class="p">,</span> <span class="n">CL</span><span class="o">=</span><span class="mi">181</span><span class="p">,</span> <span class="n">rshift</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/psc_ArtPastell_11_3_0.png" src="../../_images/psc_ArtPastell_11_3_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_pastell</span><span class="p">(</span><span class="n">nx</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">1600</span><span class="p">,</span> <span class="n">CL</span><span class="o">=</span><span class="mi">151</span><span class="p">,</span> <span class="n">rshift</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/psc_ArtPastell_11_4_0.png" src="../../_images/psc_ArtPastell_11_4_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_pastell</span><span class="p">(</span><span class="n">nx</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">1600</span><span class="p">,</span> <span class="n">CL</span><span class="o">=</span><span class="mi">183</span><span class="p">,</span> <span class="n">rshift</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/psc_ArtPastell_11_5_0.png" src="../../_images/psc_ArtPastell_11_5_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="code-with-for-loops">
+<h1>Code with for-loops<a class="headerlink" href="#code-with-for-loops" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_pastell_FOR</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">CL</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">rshift</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">*</span> <span class="n">CL</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">height</span><span class="p">):</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="n">rshift</span><span class="p">,</span> <span class="n">rshift</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">height</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">arr</span><span class="p">[</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">3</span> <span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="n">rshift</span><span class="p">,</span> <span class="n">rshift</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+      
+    <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">)</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;pic_pastell_FOR.png&#39;</span>
+    <span class="c1">#im.save(filename)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">));</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+    
+<span class="c1"># draw_pastell_FOR(width=1600, height=900, CL=120, rshift=3)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="comparing-the-speed">
+<h1>Comparing the speed<a class="headerlink" href="#comparing-the-speed" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%timeit draw_pastell(width=1600, hight=900, CL=180, rshift=3)
+Result:
+1.8 s ± 23.5 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+
+
+%timeit draw_pastell_FOR(width=1600, hight=900, CL=180, rshift=3)
+Result:
+22.6 s ± 202 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+<p>The difference of the runtime is about a <strong>factor 12</strong>.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./source\D_project_and_community"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../C_technical_manual/cfd-03-grids-for-airfoils.html" title="previous page">Create your own NACA airfoil profile</a>
+    <a class='right-next' id="next-link" href="psc_midpoint_1D_14.html" title="next page">The steps to compute</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Peter Schuhmacher (PhD), Nikola Cihoric (MD)<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

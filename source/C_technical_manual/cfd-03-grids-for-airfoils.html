@@ -1,0 +1,675 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create your own NACA airfoil profile &#8212; SmartOncology</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../../_static/SmartOncoLogo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Vectorized code" href="../D_project_and_community/psc_ArtPastell_11.html" />
+    <link rel="prev" title="Types and test cases in 2-dimensional space" href="psc_interpolation_20.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/SmartOncoLogo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SmartOncology</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   SmartOncology
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  1 - Overview
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../A_overviews/psc_Recaman_Sequ_01.html">
+   Recamán’s sequence - Logo of SmartOncology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../A_overviews/psc_1dim_grid_.html">
+   Important ressources
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  2 - User manual
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../B_user_manual/psc_matterhorn_evaluate_14.html">
+   The information we have: a digital elevation model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../B_user_manual/cfd-01-rectangular-grid-genereation-python.html">
+   Aequidistant rectangular grids
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../B_user_manual/cfd-02-body-fitted-grid-genereation-python.html">
+   Python code for a terrain-following grid
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  3 - Technical manual
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="psc_interpolation_20.html">
+   Types and test cases in 2-dimensional space
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Create your own NACA airfoil profile
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  4 - Project and community
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../D_project_and_community/psc_ArtPastell_11.html">
+   Vectorized code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../D_project_and_community/psc_midpoint_1D_14.html">
+   The steps to compute
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Visit our <a href="https://github.com/SmartOncology/Manuals-v0.1/">GitHub Repository</a><div> This book is powered by <a href="https://jupyterbook.org">Jupyter Book</a></div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/source/C_technical_manual/cfd-03-grids-for-airfoils.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/SmartOncology/Manuals-v0.1/master?urlpath=tree/source/C_technical_manual/cfd-03-grids-for-airfoils.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Create your own NACA airfoil profile
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graphical-display-of-the-profile">
+     Graphical display of the profile
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#o-grid">
+   O-grid
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graphical-display">
+     Graphical display
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-grid">
+   C-grid
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Graphical display
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>Title: Computational Fluid Dynamics 03: Grids for airfoils
+Date: 2017-05-09 08:30
+Category: ComputationalFluidDynamics
+Tags: Python, grid generation
+Slug: cfd-03-grids-for-airfoils
+Cover: /p5103/img5103/output_7_0.png
+Authors: Peter Schuhmacher
+Summary: Vectorized Python code to generate grids for airfoils</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mclr</span>
+
+<span class="k">def</span> <span class="nf">scale01</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>   <span class="c1">#--- transform z to [0 ..1]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">z</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">z</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">scale11</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>   <span class="c1">#--- transform z to [-1 ..1]</span>
+    <span class="k">return</span> <span class="mf">2.0</span><span class="o">*</span><span class="p">(</span><span class="n">scale01</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">redu</span><span class="p">(</span><span class="n">A</span><span class="p">):</span> <span class="k">return</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="create-your-own-naca-airfoil-profile">
+<h1>Create your own NACA airfoil profile<a class="headerlink" href="#create-your-own-naca-airfoil-profile" title="Permalink to this headline">¶</a></h1>
+<p>Here <a class="reference external" href="http://airfoiltools.com/">http://airfoiltools.com/</a> is a online tool where you can generate your own profil of an airfoil.</p>
+<div class="section" id="graphical-display-of-the-profile">
+<h2>Graphical display of the profile<a class="headerlink" href="#graphical-display-of-the-profile" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.86442e-01</span><span class="p">,</span> <span class="mf">9.75972e-01</span><span class="p">,</span> <span class="mf">9.62609e-01</span><span class="p">,</span> <span class="mf">9.46424e-01</span><span class="p">,</span> <span class="mf">9.27507e-01</span><span class="p">,</span> <span class="mf">9.05965e-01</span><span class="p">,</span> <span class="mf">8.81917e-01</span><span class="p">,</span> <span class="mf">8.55503e-01</span><span class="p">,</span> <span class="mf">8.26873e-01</span><span class="p">,</span> <span class="mf">7.96195e-01</span><span class="p">,</span> <span class="mf">7.63650e-01</span><span class="p">,</span> <span class="mf">7.29431e-01</span><span class="p">,</span> <span class="mf">6.93744e-01</span><span class="p">,</span> <span class="mf">6.56806e-01</span><span class="p">,</span>
+       <span class="mf">6.18842e-01</span><span class="p">,</span> <span class="mf">5.80087e-01</span><span class="p">,</span> <span class="mf">5.40782e-01</span><span class="p">,</span> <span class="mf">5.01174e-01</span><span class="p">,</span> <span class="mf">4.61516e-01</span><span class="p">,</span> <span class="mf">4.22059e-01</span><span class="p">,</span> <span class="mf">3.82788e-01</span><span class="p">,</span> <span class="mf">3.43869e-01</span><span class="p">,</span> <span class="mf">3.05921e-01</span><span class="p">,</span> <span class="mf">2.69213e-01</span><span class="p">,</span> <span class="mf">2.34002e-01</span><span class="p">,</span> <span class="mf">2.00539e-01</span><span class="p">,</span> <span class="mf">1.69056e-01</span><span class="p">,</span> <span class="mf">1.39770e-01</span><span class="p">,</span>
+       <span class="mf">1.12880e-01</span><span class="p">,</span> <span class="mf">8.85600e-02</span><span class="p">,</span> <span class="mf">6.69640e-02</span><span class="p">,</span> <span class="mf">4.82210e-02</span><span class="p">,</span> <span class="mf">3.24370e-02</span><span class="p">,</span> <span class="mf">1.96930e-02</span><span class="p">,</span> <span class="mf">1.00510e-02</span><span class="p">,</span> <span class="mf">3.54700e-03</span><span class="p">,</span> <span class="mf">1.98000e-04</span><span class="p">,</span> <span class="mf">0.00000e+00</span><span class="p">,</span> <span class="mf">2.88500e-03</span><span class="p">,</span> <span class="mf">8.76500e-03</span><span class="p">,</span> <span class="mf">1.75790e-02</span><span class="p">,</span> <span class="mf">2.92500e-02</span><span class="p">,</span>
+       <span class="mf">4.36840e-02</span><span class="p">,</span> <span class="mf">6.07730e-02</span><span class="p">,</span> <span class="mf">8.03960e-02</span><span class="p">,</span> <span class="mf">1.02423e-01</span><span class="p">,</span> <span class="mf">1.26714e-01</span><span class="p">,</span> <span class="mf">1.53123e-01</span><span class="p">,</span> <span class="mf">1.81496e-01</span><span class="p">,</span> <span class="mf">2.11676e-01</span><span class="p">,</span> <span class="mf">2.43499e-01</span><span class="p">,</span> <span class="mf">2.76797e-01</span><span class="p">,</span> <span class="mf">3.11395e-01</span><span class="p">,</span> <span class="mf">3.47114e-01</span><span class="p">,</span> <span class="mf">3.83767e-01</span><span class="p">,</span> <span class="mf">4.21506e-01</span><span class="p">,</span>
+       <span class="mf">4.60025e-01</span><span class="p">,</span> <span class="mf">4.98826e-01</span><span class="p">,</span> <span class="mf">5.37677e-01</span><span class="p">,</span> <span class="mf">5.76348e-01</span><span class="p">,</span> <span class="mf">6.14603e-01</span><span class="p">,</span> <span class="mf">6.52211e-01</span><span class="p">,</span> <span class="mf">6.88939e-01</span><span class="p">,</span> <span class="mf">7.24559e-01</span><span class="p">,</span> <span class="mf">7.58849e-01</span><span class="p">,</span> <span class="mf">7.91590e-01</span><span class="p">,</span> <span class="mf">8.22575e-01</span><span class="p">,</span> <span class="mf">8.51604e-01</span><span class="p">,</span> <span class="mf">8.78488e-01</span><span class="p">,</span> <span class="mf">9.03052e-01</span><span class="p">,</span>
+       <span class="mf">9.25133e-01</span><span class="p">,</span> <span class="mf">9.44583e-01</span><span class="p">,</span> <span class="mf">9.61271e-01</span><span class="p">,</span> <span class="mf">9.75084e-01</span><span class="p">,</span> <span class="mf">9.85928e-01</span><span class="p">])</span>
+<span class="n">py</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">0.003794</span><span class="p">,</span>  <span class="mf">0.006669</span><span class="p">,</span>  <span class="mf">0.010271</span><span class="p">,</span>  <span class="mf">0.014531</span><span class="p">,</span>  <span class="mf">0.019373</span><span class="p">,</span>  <span class="mf">0.024709</span><span class="p">,</span>  <span class="mf">0.030445</span><span class="p">,</span>  <span class="mf">0.036484</span><span class="p">,</span>  <span class="mf">0.042724</span><span class="p">,</span>  <span class="mf">0.049065</span><span class="p">,</span>  <span class="mf">0.055404</span><span class="p">,</span>  <span class="mf">0.061641</span><span class="p">,</span>  <span class="mf">0.06768</span> <span class="p">,</span>  <span class="mf">0.073424</span><span class="p">,</span>  <span class="mf">0.078785</span><span class="p">,</span>  <span class="mf">0.083676</span><span class="p">,</span>  <span class="mf">0.088018</span><span class="p">,</span>
+        <span class="mf">0.091737</span><span class="p">,</span>  <span class="mf">0.094768</span><span class="p">,</span>  <span class="mf">0.097055</span><span class="p">,</span>  <span class="mf">0.09851</span> <span class="p">,</span>  <span class="mf">0.098792</span><span class="p">,</span>  <span class="mf">0.09784</span> <span class="p">,</span>  <span class="mf">0.095689</span><span class="p">,</span>  <span class="mf">0.092396</span><span class="p">,</span>  <span class="mf">0.088044</span><span class="p">,</span>  <span class="mf">0.082734</span><span class="p">,</span>  <span class="mf">0.076589</span><span class="p">,</span>  <span class="mf">0.069743</span><span class="p">,</span>  <span class="mf">0.062343</span><span class="p">,</span>  <span class="mf">0.05454</span> <span class="p">,</span>  <span class="mf">0.046485</span><span class="p">,</span>  <span class="mf">0.038325</span><span class="p">,</span>  <span class="mf">0.030193</span><span class="p">,</span>
+        <span class="mf">0.022209</span><span class="p">,</span>  <span class="mf">0.014471</span><span class="p">,</span>  <span class="mf">0.007052</span><span class="p">,</span>  <span class="mf">0.</span>      <span class="p">,</span> <span class="o">-</span><span class="mf">0.006437</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.012027</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.016779</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.020704</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.023825</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.026172</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.027782</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.028706</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.029</span>   <span class="p">,</span> <span class="o">-</span><span class="mf">0.028733</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.027985</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.026841</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.025397</span><span class="p">,</span>
+       <span class="o">-</span><span class="mf">0.023753</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.022012</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.020277</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01865</span> <span class="p">,</span> <span class="o">-</span><span class="mf">0.01716</span> <span class="p">,</span> <span class="o">-</span><span class="mf">0.015589</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01396</span> <span class="p">,</span> <span class="o">-</span><span class="mf">0.012326</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.010734</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.009222</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.007818</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.006542</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005403</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.004404</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.003543</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.002811</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.002197</span><span class="p">,</span>
+       <span class="o">-</span><span class="mf">0.001688</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.001271</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.000931</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.000659</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.000443</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.000277</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.000153</span><span class="p">])</span>
+<span class="n">nn</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">px</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">px</span><span class="p">,</span><span class="n">py</span><span class="p">,</span><span class="s1">&#39;o-&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">px</span><span class="p">,</span><span class="n">py</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;datalim&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;NACA 6408 Airfoil M=6.0% P=40.0% T=8.0%&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cfd-03-grids-for-airfoils_4_0.png" src="../../_images/cfd-03-grids-for-airfoils_4_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="o-grid">
+<h1>O-grid<a class="headerlink" href="#o-grid" title="Permalink to this headline">¶</a></h1>
+<p>This is a polar type grid. The lower boundary is now given by the data of the airfoil. The grid is steched in r-direction so that the grid points are concentrated near the airfoil surface. Angel <span class="math notranslate nohighlight">\(\phi\)</span> is not fully closed for demonstration purposes only.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fStretch</span><span class="p">(</span><span class="n">my</span><span class="p">):</span>
+    <span class="n">yStretch</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">yOffset</span> <span class="o">=</span> <span class="mf">2.95</span>  <span class="c1">#control Parameters</span>
+    <span class="n">iy</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">my</span><span class="p">)</span>
+    <span class="n">sy</span> <span class="o">=</span> <span class="n">scale01</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">yStretch</span><span class="o">*</span><span class="p">(</span><span class="n">yOffset</span><span class="o">+</span><span class="n">iy</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">));</span>  <span class="c1"># build streched </span>
+    <span class="k">return</span> <span class="n">sy</span>
+
+<span class="k">def</span> <span class="nf">coord</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">xi</span><span class="p">):</span>
+       <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">xi</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span>
+    
+<span class="c1">#--- outer circle, north boundary ------</span>
+<span class="n">R</span>   <span class="o">=</span> <span class="mf">1.25</span><span class="p">;</span>
+<span class="n">cx</span>  <span class="o">=</span> <span class="n">px</span><span class="p">[</span><span class="n">nn</span><span class="o">//</span><span class="mi">4</span><span class="p">];</span> <span class="n">cy</span><span class="o">=</span><span class="n">py</span><span class="p">[</span><span class="n">nn</span><span class="o">//</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">1.98</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">nn</span><span class="p">)</span> <span class="c1">#for demonstration only, (0.0,2.0*np.pi, nn) else</span>
+<span class="n">Rtx</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">+</span><span class="n">cx</span><span class="p">;</span> 
+<span class="n">Rty</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+
+<span class="n">mx</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">size</span>    <span class="c1"># number of points in x-direction</span>
+<span class="n">my</span> <span class="o">=</span> <span class="mi">10</span>         <span class="c1"># number of points in y-direction</span>
+
+<span class="c1">#--- initialize the 2D arrays of coordinates ---------</span>
+<span class="n">xk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">))</span>
+<span class="n">yk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">))</span>
+
+<span class="n">yEta</span> <span class="o">=</span> <span class="n">fStretch</span><span class="p">(</span><span class="n">my</span><span class="p">)</span>   <span class="c1"># strechting in y-direction</span>
+
+<span class="c1">#--- assemble the coord arrays ------------------</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mx</span><span class="p">):</span>
+    <span class="n">xk</span><span class="p">[</span><span class="n">t</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">coord</span><span class="p">(</span><span class="n">px</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">Rtx</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">yEta</span><span class="p">)</span>
+    <span class="n">yk</span><span class="p">[</span><span class="n">t</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">coord</span><span class="p">(</span><span class="n">py</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">Rty</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">yEta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="graphical-display">
+<h2>Graphical display<a class="headerlink" href="#graphical-display" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#---- grafics --------------------------------------------------------</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">11</span><span class="p">))</span> 
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">Gx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">px</span><span class="p">,</span><span class="n">Rtx</span><span class="p">),</span><span class="n">px</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">Gy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">py</span><span class="p">,</span><span class="n">Rty</span><span class="p">),</span><span class="n">py</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Gx</span><span class="p">,</span><span class="n">Gy</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\mathbf</span><span class="si">{x}</span><span class="s2">_</span><span class="si">{bottom}</span><span class="s2">$&quot;</span><span class="p">,</span><span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.10</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\mathbf</span><span class="si">{x}</span><span class="s2">_</span><span class="si">{top}</span><span class="s2">$&quot;</span><span class="p">,</span>   <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.30</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\mathbf</span><span class="si">{x}</span><span class="s2">_</span><span class="si">{right}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.30</span><span class="p">,</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\mathbf</span><span class="si">{x}</span><span class="s2">_</span><span class="si">{left}</span><span class="s2">$&quot;</span><span class="p">,</span>  <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">myCmap</span> <span class="o">=</span> <span class="n">mclr</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="s1">&#39;white&#39;</span><span class="p">])</span>
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xk</span><span class="p">,</span> <span class="n">yk</span><span class="p">,</span> <span class="n">redu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">xk</span><span class="p">)),</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">myCmap</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">px</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Rtx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">),(</span><span class="n">py</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Rty</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">px</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">Rtx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),(</span><span class="n">py</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">Rty</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="c1">#ax4.fill(px, py, &#39;r&#39;,zorder=10)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cfd-03-grids-for-airfoils_8_0.png" src="../../_images/cfd-03-grids-for-airfoils_8_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="c-grid">
+<h1>C-grid<a class="headerlink" href="#c-grid" title="Permalink to this headline">¶</a></h1>
+<p>Concerning the grid point economics the C-grid is useful to have more grid pints downwind the airfoil. The grid has to be generated in several patches that are concatenated. It needs a certain effort to get smooth interfaces which are not optimized in this example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#nn = nk//2</span>
+<span class="n">ix1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">//</span><span class="mi">4</span><span class="p">;</span> <span class="n">ix2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">-</span><span class="n">ix1</span>
+
+<span class="n">R</span> <span class="o">=</span> <span class="mf">1.25</span><span class="p">;</span> <span class="n">dy</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">;</span> <span class="n">dx</span> <span class="o">=</span> <span class="mf">0.005</span>
+<span class="n">xback</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="c1">#--- lower boundary ---------------------------</span>
+<span class="n">q1x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xback</span><span class="p">,</span><span class="mf">1.0</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span> <span class="n">q1y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">q1x</span><span class="p">)</span><span class="o">+</span><span class="n">dy</span><span class="p">;</span> 
+<span class="n">q2x</span> <span class="o">=</span> <span class="n">px</span><span class="p">[</span>  <span class="mi">0</span><span class="p">:</span><span class="n">ix1</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>                <span class="n">q2y</span> <span class="o">=</span> <span class="n">py</span><span class="p">[</span>  <span class="mi">0</span><span class="p">:</span><span class="n">ix1</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">q3x</span> <span class="o">=</span> <span class="n">px</span><span class="p">[</span><span class="n">ix1</span><span class="p">:</span><span class="n">ix2</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>                <span class="n">q3y</span> <span class="o">=</span> <span class="n">py</span><span class="p">[</span><span class="n">ix1</span><span class="p">:</span><span class="n">ix2</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">q4x</span> <span class="o">=</span> <span class="n">px</span><span class="p">[</span><span class="n">ix2</span><span class="p">:</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>                 <span class="n">q4y</span> <span class="o">=</span> <span class="n">py</span><span class="p">[</span><span class="n">ix2</span><span class="p">:</span><span class="n">nn</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">q5x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span><span class="n">xback</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span> <span class="n">q5y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">q5x</span><span class="p">)</span><span class="o">-</span><span class="n">dy</span><span class="p">;</span> 
+
+<span class="n">qtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]);</span>                 <span class="n">qty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]);</span>
+<span class="n">qtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q1x</span><span class="p">,</span><span class="n">q2x</span><span class="p">),</span><span class="n">q3x</span><span class="p">),</span><span class="n">q4x</span><span class="p">),</span><span class="n">q5x</span><span class="p">)</span>
+<span class="n">qty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q1y</span><span class="p">,</span><span class="n">q2y</span><span class="p">),</span><span class="n">q3y</span><span class="p">),</span><span class="n">q4y</span><span class="p">),</span><span class="n">q5y</span><span class="p">)</span>
+
+<span class="c1">#--- upper boundary ------------------------------</span>
+<span class="n">Q1x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">q1x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">q2x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">q1x</span><span class="o">.</span><span class="n">size</span><span class="o">+</span><span class="n">q2x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">Q1y</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">Q1x</span><span class="p">)</span>
+
+<span class="n">cx</span> <span class="o">=</span> <span class="n">q3x</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">cy</span><span class="o">=</span><span class="n">q3y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ix1</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">ix2</span><span class="p">,</span> <span class="n">q3x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">scale01</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+<span class="n">Q2x</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">+</span><span class="n">cx</span><span class="p">;</span> 
+<span class="n">Q2y</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+
+<span class="n">Q3x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">q2x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">q1x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">q1x</span><span class="o">.</span><span class="n">size</span><span class="o">+</span><span class="n">q2x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">Q3y</span> <span class="o">=</span> <span class="o">-</span><span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">Q3x</span><span class="p">)</span>
+
+<span class="n">Qtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Q1x</span><span class="p">,</span><span class="n">Q2x</span><span class="p">),</span><span class="n">Q3x</span><span class="p">)</span>
+<span class="n">Qty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Q1y</span><span class="p">,</span><span class="n">Q2y</span><span class="p">),</span><span class="n">Q3y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Graphical display<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mx</span> <span class="o">=</span> <span class="n">qtx</span><span class="o">.</span><span class="n">size</span>         <span class="c1"># number of points in x-direction</span>
+<span class="n">my</span> <span class="o">=</span> <span class="mi">10</span>               <span class="c1"># number of points in y-direction</span>
+<span class="n">gsi</span> <span class="o">=</span> <span class="n">fStretch</span><span class="p">(</span><span class="n">my</span><span class="p">)</span>    <span class="c1"># streching in y-direction</span>
+
+<span class="c1">#---- initialize ---------------------</span>
+<span class="n">xk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">))</span>
+<span class="n">yk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">))</span>
+
+<span class="c1">#---- complete the 2D x-and y-coord -------------------------------------------</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mx</span><span class="p">):</span>
+    <span class="n">xk</span><span class="p">[</span><span class="n">t</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">coord</span><span class="p">(</span><span class="n">qtx</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">Qtx</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">gsi</span><span class="p">)</span>
+    <span class="n">yk</span><span class="p">[</span><span class="n">t</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">coord</span><span class="p">(</span><span class="n">qty</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">Qty</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">gsi</span><span class="p">)</span>
+
+<span class="c1">#---- grafics ----------------------------------------------------------------</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">11</span><span class="p">))</span> 
+<span class="n">myCmap</span> <span class="o">=</span> <span class="n">mclr</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="s1">&#39;white&#39;</span><span class="p">])</span>
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xk</span><span class="p">,</span> <span class="n">yk</span><span class="p">,</span> <span class="n">redu</span><span class="p">(</span><span class="mi">0</span><span class="o">*</span><span class="n">xk</span><span class="p">),</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">myCmap</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">q1x</span><span class="p">,</span><span class="n">q1y</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$\mathbf</span><span class="si">{x}</span><span class="s2">_</span><span class="si">{bottom}</span><span class="s2">$&quot;</span><span class="p">,</span><span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$\mathbf</span><span class="si">{x}</span><span class="s2">_</span><span class="si">{top}</span><span class="s2">$&quot;</span><span class="p">,</span>   <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.30</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$\mathbf</span><span class="si">{x}</span><span class="s2">_</span><span class="si">{bottom}</span><span class="s2">$&quot;</span><span class="p">,</span><span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.30</span><span class="p">,</span><span class="o">-</span><span class="mf">0.08</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$\mathbf</span><span class="si">{x}</span><span class="s2">_</span><span class="si">{bottom}</span><span class="s2">$&quot;</span><span class="p">,</span><span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.11</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\mathbf</span><span class="si">{x}</span><span class="s2">_</span><span class="si">{right}</span><span class="s2">$&quot;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.11</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\mathbf</span><span class="si">{x}</span><span class="s2">_</span><span class="si">{left}</span><span class="s2">$&quot;</span><span class="p">,</span>  <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;datalim&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cfd-03-grids-for-airfoils_12_0.png" src="../../_images/cfd-03-grids-for-airfoils_12_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#http://airfoiltools.com/</span>
+<span class="c1">#NACA NACA 4412 Airfoil M=4.0% P=40.0% T=12.0%</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">airfoil</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">  0.986442  0.003794</span>
+<span class="s1">  0.975972  0.006669</span>
+<span class="s1">  0.962609  0.010271</span>
+<span class="s1">  0.946424  0.014531</span>
+<span class="s1">  0.927507  0.019373</span>
+<span class="s1">  0.905965  0.024709</span>
+<span class="s1">  0.881917  0.030445</span>
+<span class="s1">  0.855503  0.036484</span>
+<span class="s1">  0.826873  0.042724</span>
+<span class="s1">  0.796195  0.049065</span>
+<span class="s1">  0.763650  0.055404</span>
+<span class="s1">  0.729431  0.061641</span>
+<span class="s1">  0.693744  0.067680</span>
+<span class="s1">  0.656806  0.073424</span>
+<span class="s1">  0.618842  0.078785</span>
+<span class="s1">  0.580087  0.083676</span>
+<span class="s1">  0.540782  0.088018</span>
+<span class="s1">  0.501174  0.091737</span>
+<span class="s1">  0.461516  0.094768</span>
+<span class="s1">  0.422059  0.097055</span>
+<span class="s1">  0.382788  0.098510</span>
+<span class="s1">  0.343869  0.098792</span>
+<span class="s1">  0.305921  0.097840</span>
+<span class="s1">  0.269213  0.095689</span>
+<span class="s1">  0.234002  0.092396</span>
+<span class="s1">  0.200539  0.088044</span>
+<span class="s1">  0.169056  0.082734</span>
+<span class="s1">  0.139770  0.076589</span>
+<span class="s1">  0.112880  0.069743</span>
+<span class="s1">  0.088560  0.062343</span>
+<span class="s1">  0.066964  0.054540</span>
+<span class="s1">  0.048221  0.046485</span>
+<span class="s1">  0.032437  0.038325</span>
+<span class="s1">  0.019693  0.030193</span>
+<span class="s1">  0.010051  0.022209</span>
+<span class="s1">  0.003547  0.014471</span>
+<span class="s1">  0.000198  0.007052</span>
+<span class="s1">  0.000000  0.000000</span>
+<span class="s1">  0.002885 -0.006437</span>
+<span class="s1">  0.008765 -0.012027</span>
+<span class="s1">  0.017579 -0.016779</span>
+<span class="s1">  0.029250 -0.020704</span>
+<span class="s1">  0.043684 -0.023825</span>
+<span class="s1">  0.060773 -0.026172</span>
+<span class="s1">  0.080396 -0.027782</span>
+<span class="s1">  0.102423 -0.028706</span>
+<span class="s1">  0.126714 -0.029000</span>
+<span class="s1">  0.153123 -0.028733</span>
+<span class="s1">  0.181496 -0.027985</span>
+<span class="s1">  0.211676 -0.026841</span>
+<span class="s1">  0.243499 -0.025397</span>
+<span class="s1">  0.276797 -0.023753</span>
+<span class="s1">  0.311395 -0.022012</span>
+<span class="s1">  0.347114 -0.020277</span>
+<span class="s1">  0.383767 -0.018650</span>
+<span class="s1">  0.421506 -0.017160</span>
+<span class="s1">  0.460025 -0.015589</span>
+<span class="s1">  0.498826 -0.013960</span>
+<span class="s1">  0.537677 -0.012326</span>
+<span class="s1">  0.576348 -0.010734</span>
+<span class="s1">  0.614603 -0.009222</span>
+<span class="s1">  0.652211 -0.007818</span>
+<span class="s1">  0.688939 -0.006542</span>
+<span class="s1">  0.724559 -0.005403</span>
+<span class="s1">  0.758849 -0.004404</span>
+<span class="s1">  0.791590 -0.003543</span>
+<span class="s1">  0.822575 -0.002811</span>
+<span class="s1">  0.851604 -0.002197</span>
+<span class="s1">  0.878488 -0.001688</span>
+<span class="s1">  0.903052 -0.001271</span>
+<span class="s1">  0.925133 -0.000931</span>
+<span class="s1">  0.944583 -0.000659</span>
+<span class="s1">  0.961271 -0.000443</span>
+<span class="s1">  0.975084 -0.000277</span>
+<span class="s1">  0.985928 -0.000153 &#39;&#39;&#39;</span><span class="p">])</span>
+
+<span class="n">b</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">chararray</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">airfoil</span><span class="p">)</span>
+<span class="n">c</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">nk</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">size</span>
+<span class="n">nn</span> <span class="o">=</span> <span class="n">nk</span><span class="o">//</span><span class="mi">2</span>
+<span class="n">px</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nk</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">];</span> <span class="n">py</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">nk</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nk</span><span class="p">,</span> <span class="n">px</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">py</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>150 75 75
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./source\C_technical_manual"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="psc_interpolation_20.html" title="previous page">Types and test cases in 2-dimensional space</a>
+    <a class='right-next' id="next-link" href="../D_project_and_community/psc_ArtPastell_11.html" title="next page">Vectorized code</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Peter Schuhmacher (PhD), Nikola Cihoric (MD)<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

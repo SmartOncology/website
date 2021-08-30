@@ -1,0 +1,908 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Types and test cases in 2-dimensional space &#8212; SmartOncology</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../../_static/SmartOncoLogo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Create your own NACA airfoil profile" href="cfd-03-grids-for-airfoils.html" />
+    <link rel="prev" title="Python code for a terrain-following grid" href="../B_user_manual/cfd-02-body-fitted-grid-genereation-python.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/SmartOncoLogo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SmartOncology</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   SmartOncology
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  1 - Overview
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../A_overviews/psc_Recaman_Sequ_01.html">
+   Recamán’s sequence - Logo of SmartOncology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../A_overviews/psc_1dim_grid_.html">
+   Important ressources
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  2 - User manual
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../B_user_manual/psc_matterhorn_evaluate_14.html">
+   The information we have: a digital elevation model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../B_user_manual/cfd-01-rectangular-grid-genereation-python.html">
+   Aequidistant rectangular grids
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../B_user_manual/cfd-02-body-fitted-grid-genereation-python.html">
+   Python code for a terrain-following grid
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  3 - Technical manual
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Types and test cases in 2-dimensional space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cfd-03-grids-for-airfoils.html">
+   Create your own NACA airfoil profile
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  4 - Project and community
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../D_project_and_community/psc_ArtPastell_11.html">
+   Vectorized code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../D_project_and_community/psc_midpoint_1D_14.html">
+   The steps to compute
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Visit our <a href="https://github.com/SmartOncology/Manuals-v0.1/">GitHub Repository</a><div> This book is powered by <a href="https://jupyterbook.org">Jupyter Book</a></div>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/source/C_technical_manual/psc_interpolation_20.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Types and test cases in 2-dimensional space
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpolation-with-inverted-distances">
+     Interpolation with inverted distances
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpolation-with-a-finite-element-fem">
+     Interpolation with a finite element (FEM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1-interpolation-of-coordinates-half-pipe">
+   Example 1: Interpolation of coordinates (half pipe)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mapping-x-y-longmapsto-xi-nu">
+   2. Mapping
+   <span class="math notranslate nohighlight">
+    \((x,y) \longmapsto (\xi, \nu)\)
+   </span>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-1-circles">
+     Example 2.1: Circles
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-2-the-six-hump-camelback-function">
+     Example 2.2: The Six-hump-camelback-function
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-3-two-dimensional-bimodal-pdf">
+     Example 2.3: Two-dimensional bimodal PDF
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-3-interpolation-with-frac-1-distances-p-weights-without-finite-element">
+     Example 2.3: Interpolation with
+     <span class="math notranslate nohighlight">
+      \(\frac{1}{(distances) ^p}\)
+     </span>
+     weights (without finite element)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mapping-xi-nu-longmapsto-x-y">
+   3. Mapping
+   <span class="math notranslate nohighlight">
+    \( (\xi, \nu) \longmapsto  (x,y)\)
+   </span>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-1-straight-vertical-lines">
+     Example 3.1: Straight vertical lines
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-2-circles">
+     Example 3.2: Circles
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-3-the-six-hump-camelback-function">
+     Example 3.3: The Six-hump-camelback-function
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-4-two-dimensional-bimodal-pdf">
+     Example 3.4: Two-dimensional bimodal PDF
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-code-finite-element-interpolation">
+   <em>
+    Python code: Finite element interpolation
+   </em>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-half-pipe">
+     Example ‘Half pipe’
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-code-inverse-distance-interpolation">
+   <em>
+    Python code: Inverse distance interpolation
+   </em>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphics">
+   <em>
+    Graphics
+   </em>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <ul class="simple">
+<li><p>Title: Mapping of mean values and interpolation of distributions</p></li>
+<li><p>Date: 2018-06-25 17:50</p></li>
+<li><p>Category: ComputationalFluidDynamics</p></li>
+<li><p>Tags: Python, probablility densitiy function</p></li>
+<li><p>Slug: spatial-interpolation-python</p></li>
+<li><p>Cover: /posts/img5104/output_6_1.png</p></li>
+<li><p>Authors: Peter Schuhmacher</p></li>
+</ul>
+<p>Summary: We explore the building of mean values and interpolations when data have more than 1 dimension. We generate numerically a macro finite element so that arbitrary sized data can be anlalysed taking  their inherent structure into account.</p>
+<p>An interpolated value or a mean value <span class="math notranslate nohighlight">\(\phi_P\)</span> is most often evaluated by it’s neighbouring values using:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\phi_p = w_0 \phi_0 + w_1 \phi_1 + w_2 \phi_2 + .........w_n \phi_n \\
+\end{split}\]</div>
+<p>We can define two vectors <span class="math notranslate nohighlight">\(\mathbf{\phi}\)</span> and  <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> so that <span class="math notranslate nohighlight">\(\phi_p\)</span> can be computed as the scalar product of them:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbf{w} &amp;= \begin{bmatrix} w_0 &amp; w_1 &amp; w_2 &amp; ...... &amp;w_n \end{bmatrix}^T \\
+\mathbf{\phi} &amp;= \begin{bmatrix} {\phi}_0 &amp; {\phi}_1 &amp; {\phi}_2 &amp; ...... &amp;{\phi}_n \end{bmatrix}^T \\
+\phi_p  &amp;= \mathbf{\phi}^T \mathbf{w} \qquad (scalar \: product)
+\end{align}
+\end{split}\]</div>
+<p>where we assume that the weights <span class="math notranslate nohighlight">\(w_i\)</span> are normalized with <span class="math notranslate nohighlight">\(W = \Sigma_i \tilde{w}_i\)</span> in the sense:
+$<span class="math notranslate nohighlight">\(
+\mathbf{w} =  \begin{bmatrix} \tilde{w}_0, \, \tilde{w}_1, \, ......., \, \tilde{w}_n, \end{bmatrix} / W
+\)</span>$</p>
+<blockquote>
+<div><p>This type of model is used extremly often, e.g. in</p>
+<ul class="simple">
+<li><p>health utilities in decision trees</p></li>
+<li><p>effect size in meta analysis</p></li>
+<li><p>evaluation of histogramms</p></li>
+<li><p>agregation in multi criteria analysis</p></li>
+<li><p>mean value of anything</p></li>
+</ul>
+<p>but the inherent structures - cross correlations - are almost never taken into account…  :-(</p>
+</div></blockquote>
+<p>It’s extremly wide open what <em>neighbouring</em> means and what type of entities are summed up - in a multi criteria analysis just any- and everything. The same is true for the weights which are assigned with large values for the topics we think they are most true allready or we prefer most to become true.</p>
+<div class="section" id="types-and-test-cases-in-2-dimensional-space">
+<h1>Types and test cases in 2-dimensional space<a class="headerlink" href="#types-and-test-cases-in-2-dimensional-space" title="Permalink to this headline">¶</a></h1>
+<p>We consider two algorithms for interpolation (which is the same as <em>finding the mean for several points</em>) in the <strong>2-dimensional space</strong>. The 2 dimensions are easy to understand in a geometrical sens in a landscape. But the dimensions could be of abstract types too as it is known in PCA (principal component analysis).</p>
+<p>Both algorithms take spatial distances somehow  into account. But you will recognize:</p>
+<ul class="simple">
+<li><p>the inverse distance algorithm is rather a pseudo-spatial method</p></li>
+<li><p>the FEM (finite element) algorithm however <strong>does take into account the spatial structure</strong></p></li>
+</ul>
+<div class="section" id="interpolation-with-inverted-distances">
+<h2>Interpolation with inverted distances<a class="headerlink" href="#interpolation-with-inverted-distances" title="Permalink to this headline">¶</a></h2>
+<p>In this case the weights are determined as the invers of the distances of the observing points to the point <span class="math notranslate nohighlight">\(\phi_P\)</span> under consideration raised by some power <span class="math notranslate nohighlight">\(p\)</span> (already normalized with the sum of the distances <span class="math notranslate nohighlight">\(D\)</span>):</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f8ca2352-a998-4534-9d87-ab805632bb5a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-f8ca2352-a998-4534-9d87-ab805632bb5a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\mathbf{w} &amp;= \begin{bmatrix} d_0^{-p} &amp; d_1^{-p} &amp; d_2^{-p} &amp; ...... &amp;d_n^{-p} \end{bmatrix}^T \\
+\end{align}\]</div>
+<p>Despite the fact that the <span class="math notranslate nohighlight">\(d_i\)</span> respresent the distances in a 2-dimensional space the weightening and interpolation algorithm does not take any spatial structure into account. E.g. there is no difference wether the observed data points are on a +/- straight line away form <span class="math notranslate nohighlight">\(\phi_p\)</span> or wether they are located star shapeed aorund <span class="math notranslate nohighlight">\(\phi_p\)</span>.</p>
+</div>
+<div class="section" id="interpolation-with-a-finite-element-fem">
+<h2>Interpolation with a finite element (FEM)<a class="headerlink" href="#interpolation-with-a-finite-element-fem" title="Permalink to this headline">¶</a></h2>
+<p>The finite element method does need a structured arangement of the points with the observed data. The FEM grid may be streched but it has to have the topology of a structured grid. Rather than the <strong>inversed distances</strong> the finite element method uses the <strong>inversed areas</strong> to the neighbouring points as weights. With these two features the spatial structure is included more explicitly in the <em>mean building proces</em>. Therfore the algorthm is more sophisticiated then the inverse distance method.</p>
+<p>Consider the quadrilateral element with 4 nodes. The FEM method defines the spatial variation of a quantity <span class="math notranslate nohighlight">\(\phi\)</span> by a polynomial aproach. With polynoms of first order we get a  <a class="reference external" href="https://en.wikipedia.org/wiki/Bilinear_interpolation">bilinear  interpolation</a> which belongs to the much wider family of <a class="reference external" href="http://femtable.org/">finite elements</a></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}\label{eu_eqn}
+\phi &amp;= \alpha_1 + \alpha_2\xi + \alpha_3\nu + \alpha_4 \xi\nu   =    \begin{bmatrix} 1,\,  \xi,\,  \nu,\,  \xi\nu \end{bmatrix}   \begin{bmatrix} \alpha_1 \\ \alpha_2 \\ \alpha_3 \\ \alpha_4  \end{bmatrix}\\
+     &amp;= \mathbf{H \cdot \alpha} \quad  (scalar\: product)
+\end{align}
+\end{split}\]</div>
+<p>At the corners 1, 2, 3, 4 all quantities <span class="math notranslate nohighlight">\(\phi_i, \xi_i, \nu_i\)</span> are known:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{\phi} = \begin{bmatrix}  \phi_1 \\ \phi_2 \\ \phi_3 \\ \phi_4  \end{bmatrix}
+, 
+\qquad
+\mathbf{C} = 
+\begin{bmatrix}
+1,\  \xi_1,\  \nu_1,\  \xi_1\nu_1 \\ 
+1,\  \xi_2,\  \nu_2,\  \xi_1\nu_2 \\ 
+1,\  \xi_3,\  \nu_3,\  \xi_1\nu_3 \\ 
+1,\  \xi_4,\  \nu_4,\  \xi_1\nu_4 \\ 
+\end{bmatrix}
+\end{split}\]</div>
+<p>The up to now unknown quantity <span class="math notranslate nohighlight">\(\mathbf{\alpha}\)</span> can be evaluated by solving the equation system</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{C \cdot \alpha} = \mathbf{\phi}
+\]</div>
+<p>Once <span class="math notranslate nohighlight">\(\mathbf{\alpha}\)</span> is known, at any point <span class="math notranslate nohighlight">\((\xi, \nu)\)</span> within the quadrilateral <span class="math notranslate nohighlight">\(\phi\)</span> can be interpolated by asigning</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{H}(\xi, \nu)=\begin{bmatrix} 1,\  \xi,\  \nu,\  \xi\nu \end{bmatrix}\]</div>
+<p>and then compute</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\phi(\xi, \nu) = \mathbf{H \cdot \alpha}$$.\\## Implementation of the FEM interpolation\\We choose an inplementation where we can  handle not only quadrilaterals with (nx=2)$\cdot$(ny=2) = 4 nodes but any size of elements nx$\cdot$ny. For that we do not evaluate the shape functions $N_i$ analytically as it is found in FEM textbooks usually. Actually what we do is that **we numerically construct 1 macro finite element of lagrangian type**. Our algorithm follows directely the description above:\\1. evaluate $\mathbf{C}$
+2. evaluate $\mathbf{\alpha}$ by solving $\mathbf{C \cdot \alpha} = \mathbf{\phi}$
+3. evaluate $\phi(\xi, \nu) = \mathbf{H}(\xi, \nu) \cdot \mathbf{\alpha}$\\## The gist to higher order polynomials\\The 4 noded quadrilateral allows for linear interpolation with first order polynomials in the $\hat{\xi}$- and the $\hat{\nu}$-dircetions only. Access to higher order polynomials is found by realizing that all elements of $\mathbf{H}$ can be found by the **tensor product** (_= outer product_) of the polynomials in the 1-dimensional $\hat{\xi}$- and $\hat{\nu}$-directions. So for a third order polynomials e.g.:\end{aligned}\end{align} \]</div>
+<p>\tilde{\mathbf{H}} = \begin{bmatrix} 1 \ \xi \ \xi^2 \ \xi^3  \end{bmatrix} \begin{bmatrix} 1 , \nu , \nu^2 , \nu^3  \end{bmatrix} =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-08ef5f7e-aba5-4b9f-aba1-6bab775b303c">
+<span class="eqno">(2)<a class="headerlink" href="#equation-08ef5f7e-aba5-4b9f-aba1-6bab775b303c" title="Permalink to this equation">¶</a></span>\[\begin{bmatrix} 
+1 &amp; \nu       &amp; \nu_2       &amp; \nu^3   \\
+1 &amp; \xi\nu    &amp; \xi\nu^2    &amp; \xi\nu^3   \\
+1 &amp; \xi^2\nu  &amp; \xi^2\nu^2  &amp; \xi^2\nu^3   \\
+1 &amp; \xi^3 \nu &amp; \xi^3 \nu^2 &amp; \xi^3 \nu^3   \\
+\end{bmatrix}\]</div>
+<p>\qquad (tensor : product)
+$$</p>
+<p><span class="math notranslate nohighlight">\(\tilde{\mathbf{H}}\)</span> with dimension <span class="math notranslate nohighlight">\((nx , ny)\)</span> has then to be reshaped into <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> with dimension<span class="math notranslate nohighlight">\((1, nx \cdot ny)\)</span>. <span class="math notranslate nohighlight">\(nx\)</span> and <span class="math notranslate nohighlight">\(ny\)</span> do not have to be of the same size. With that procedure we end up with the <strong>Lagrangian type of finite element</strong>.</p>
+</div>
+</div>
+<div class="section" id="example-1-interpolation-of-coordinates-half-pipe">
+<h1>Example 1: Interpolation of coordinates (half pipe)<a class="headerlink" href="#example-1-interpolation-of-coordinates-half-pipe" title="Permalink to this headline">¶</a></h1>
+<p>In the picture of the left hand side we have 10 sampling points only. The points have been generated as part of a regular polar grid so that <span class="math notranslate nohighlight">\((x,y) = (r\, cos\phi , r\, sin\phi)\)</span>. In this example we do not interpolate an additional value <span class="math notranslate nohighlight">\(V(x,y)\)</span> but we interpolate the coordinates of the sampling points with the finite element (FEM) principle itself. On the picture of the right hand side we can see that circular pattern can be restructed by the FEM-interpolation.</p>
+<p>The curvilinear structure of the finite element can bee seen in the <span class="math notranslate nohighlight">\((\xi, \nu) \longmapsto  (x,y)\)</span> mapping of the examples in section 3 below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">half_pipe</span><span class="p">(</span><span class="n">kx</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">mx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_6_0.png" /></p>
+</div>
+<div class="section" id="mapping-x-y-longmapsto-xi-nu">
+<h1>2. Mapping <span class="math notranslate nohighlight">\((x,y) \longmapsto (\xi, \nu)\)</span><a class="headerlink" href="#mapping-x-y-longmapsto-xi-nu" title="Permalink to this headline">¶</a></h1>
+<p>We map with the finite element the interpolated values <strong>to a regular rectangular <span class="math notranslate nohighlight">\((\xi, \nu)\)</span>-grid</strong>. The red sampling points do not have to be part of a rectangular grid, but they have to have the topological structure of a curvilienar (=  curved and streched) grid.</p>
+<div class="section" id="example-2-1-circles">
+<h2>Example 2.1: Circles<a class="headerlink" href="#example-2-1-circles" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">run_fem_interpolation</span><span class="p">(</span><span class="n">kx</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">mx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gridCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">funcCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">mapCase</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="n">frnd</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_8_01.png" /></p>
+<p><img alt="png" src="../../_images/output_8_1.png" /></p>
+</div>
+<div class="section" id="example-2-2-the-six-hump-camelback-function">
+<h2>Example 2.2: The Six-hump-camelback-function<a class="headerlink" href="#example-2-2-the-six-hump-camelback-function" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">run_fem_interpolation</span><span class="p">(</span><span class="n">kx</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">mx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gridCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">funcCase</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">mapCase</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="n">frnd</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_10_0.png" /></p>
+<p><img alt="png" src="../../_images/output_10_1.png" /></p>
+</div>
+<div class="section" id="example-2-3-two-dimensional-bimodal-pdf">
+<h2>Example 2.3: Two-dimensional bimodal PDF<a class="headerlink" href="#example-2-3-two-dimensional-bimodal-pdf" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">run_fem_interpolation</span><span class="p">(</span><span class="n">kx</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">mx</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">gridCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">funcCase</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">mapCase</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="n">frnd</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_12_0.png" /></p>
+<p><img alt="png" src="../../_images/output_12_1.png" /></p>
+</div>
+<div class="section" id="example-2-3-interpolation-with-frac-1-distances-p-weights-without-finite-element">
+<h2>Example 2.3: Interpolation with  <span class="math notranslate nohighlight">\(\frac{1}{(distances) ^p}\)</span> weights (without finite element)<a class="headerlink" href="#example-2-3-interpolation-with-frac-1-distances-p-weights-without-finite-element" title="Permalink to this headline">¶</a></h2>
+<p>We try out the same examples without finite elements. The weights are determined as the invers of the distances of the observing points to the point <span class="math notranslate nohighlight">\(\phi_P\)</span> under consideration:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8643c85b-1f47-46d6-991b-e735e612c268">
+<span class="eqno">(3)<a class="headerlink" href="#equation-8643c85b-1f47-46d6-991b-e735e612c268" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\mathbf{w} &amp;= \begin{bmatrix} d_0^{-p} &amp; d_1^{-p} &amp; d_2^{-p} &amp; ...... &amp;d_n^{-p} \end{bmatrix}^T \\
+\end{align}\]</div>
+<p>In this examples we use a power of <em>p=2</em> and we generate a regular grid of sampling points. The radial influence around the sampling points is distinguishable in the results.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>  <span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">Vp</span> <span class="o">=</span> <span class="n">run_InvDist_interpolation</span><span class="p">(</span><span class="n">mx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">kx</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">funcCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">);</span>  <span class="n">plot_IDI</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">Vp</span><span class="p">,</span><span class="n">Title</span><span class="o">=</span><span class="s1">&#39;Inverse distances: Circles&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>  <span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">Vp</span> <span class="o">=</span> <span class="n">run_InvDist_interpolation</span><span class="p">(</span><span class="n">mx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">kx</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">funcCase</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">);</span>  <span class="n">plot_IDI</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">Vp</span><span class="p">,</span><span class="n">Title</span><span class="o">=</span><span class="s1">&#39;Inverse distances: 6-hump-camelback&#39;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>  <span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">Vp</span> <span class="o">=</span> <span class="n">run_InvDist_interpolation</span><span class="p">(</span><span class="n">mx</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">kx</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">funcCase</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">);</span>  <span class="n">plot_IDI</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">Vp</span><span class="p">,</span><span class="n">Title</span><span class="o">=</span><span class="s1">&#39;Inverse distances: Bi-modal PDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_14_0.png" /></p>
+</div>
+</div>
+<div class="section" id="mapping-xi-nu-longmapsto-x-y">
+<h1>3. Mapping <span class="math notranslate nohighlight">\( (\xi, \nu) \longmapsto  (x,y)\)</span><a class="headerlink" href="#mapping-xi-nu-longmapsto-x-y" title="Permalink to this headline">¶</a></h1>
+<p>In this section we map the value space to the <strong>curvilinear finite element</strong> in physical <span class="math notranslate nohighlight">\((x,y)\)</span>-coordinates itself. As a test: a straight line of constant values should remain a straight line even when the underlaying projection grid is curvilinear !</p>
+<div class="section" id="example-3-1-straight-vertical-lines">
+<h2>Example 3.1: Straight vertical lines<a class="headerlink" href="#example-3-1-straight-vertical-lines" title="Permalink to this headline">¶</a></h2>
+<p>The first examples works so fine that the Python contour procedure can not find any isolines in the difference plot :-). But we have harder examples too !</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">run_fem_interpolation</span><span class="p">(</span><span class="n">kx</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">mx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gridCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">funcCase</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">mapCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="n">frnd</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_16_0.png" /></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>C:\Users\PC\AppData\Local\Temp/ipykernel_12156/2313032905.py:72: UserWarning: No contour levels were found within the data range.
+  CS = ax2.contour(xp,yp,vDiff,nL,alpha=0.95, colors=&#39;k&#39;, linewidths=0.5);  ax2.clabel(CS, inline=1, fontsize=10, fmt=&#39;%1.2f&#39;)
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_16_2.png" /></p>
+</div>
+<div class="section" id="example-3-2-circles">
+<h2>Example 3.2: Circles<a class="headerlink" href="#example-3-2-circles" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">run_fem_interpolation</span><span class="p">(</span><span class="n">kx</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">mx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gridCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">funcCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">mapCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="n">frnd</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_18_0.png" /></p>
+<p><img alt="png" src="../../_images/output_18_1.png" /></p>
+</div>
+<div class="section" id="example-3-3-the-six-hump-camelback-function">
+<h2>Example 3.3: The Six-hump-camelback-function<a class="headerlink" href="#example-3-3-the-six-hump-camelback-function" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">run_fem_interpolation</span><span class="p">(</span><span class="n">kx</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">mx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gridCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">funcCase</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">mapCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="n">frnd</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_20_0.png" /></p>
+<p><img alt="png" src="../../_images/output_20_1.png" /></p>
+</div>
+<div class="section" id="example-3-4-two-dimensional-bimodal-pdf">
+<h2>Example 3.4: Two-dimensional bimodal PDF<a class="headerlink" href="#example-3-4-two-dimensional-bimodal-pdf" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">run_fem_interpolation</span><span class="p">(</span><span class="n">kx</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">ky</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span><span class="n">mx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">my</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gridCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">funcCase</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">mapCase</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="n">frnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="png" src="../../_images/output_22_0.png" /></p>
+<p><img alt="png" src="../../_images/output_22_1.png" /></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="python-code-finite-element-interpolation">
+<h1><em>Python code: Finite element interpolation</em><a class="headerlink" href="#python-code-finite-element-interpolation" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="nb">pow</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csc_matrix</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mclr</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>    <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">a</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">a</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">redu</span><span class="p">(</span><span class="n">A</span><span class="p">):</span> <span class="k">return</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">setup_grid</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">):</span>
+    <span class="n">sx</span><span class="p">,</span> <span class="n">sy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">mx</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">my</span><span class="p">)</span>               <span class="c1"># 1D x/y-coord side of the FEM</span>
+    <span class="n">ξc</span><span class="p">,</span> <span class="n">νc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">my</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">sy</span><span class="p">)</span> <span class="c1"># 2D grid</span>
+    <span class="k">return</span> <span class="n">ξc</span><span class="p">,</span> <span class="n">νc</span>
+
+<span class="k">def</span> <span class="nf">DM</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="n">vy</span><span class="p">,</span><span class="n">ψ</span><span class="p">):</span>          <span class="c1">#---- data rotation</span>
+    <span class="n">nx</span><span class="p">,</span><span class="n">ny</span> <span class="o">=</span> <span class="n">vx</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span> 
+    <span class="n">ux</span><span class="p">,</span><span class="n">uy</span> <span class="o">=</span> <span class="n">vx</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">vy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ψ</span><span class="p">)</span><span class="o">*</span><span class="n">vx</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ψ</span><span class="p">)</span><span class="o">*</span><span class="n">vy</span>
+    <span class="n">uy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ψ</span><span class="p">)</span><span class="o">*</span><span class="n">vx</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ψ</span><span class="p">)</span><span class="o">*</span><span class="n">vy</span>
+    <span class="k">return</span> <span class="n">ux</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">),</span> <span class="n">uy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">)</span> 
+
+<span class="k">def</span> <span class="nf">valueFunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">fCase</span><span class="p">):</span>                    <span class="c1"># Generation of virtual data at the sampling points</span>
+    <span class="k">if</span> <span class="n">fCase</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="k">return</span> <span class="n">x</span>                     <span class="c1"># vertical contstant lines</span>
+    <span class="k">if</span> <span class="n">fCase</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>    <span class="c1"># circle            </span>
+    <span class="k">if</span> <span class="n">fCase</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>                              <span class="c1"># six_hump_function</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mf">2.5</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">0.5</span><span class="p">);</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">2.5</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mf">0.5</span><span class="p">);</span> 
+        <span class="k">return</span> <span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="mf">2.1</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mf">3.0</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> \
+                <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span> 
+    <span class="k">if</span> <span class="n">fCase</span> <span class="o">==</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span>                              <span class="c1"># a probability density function PDF</span>
+        <span class="k">def</span> <span class="nf">myPDF</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="mf">0.25</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">));</span>
+        <span class="n">ψ</span> <span class="o">=</span> <span class="mf">0.15</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">;</span> <span class="n">Lx</span> <span class="o">=</span> <span class="n">Ly</span> <span class="o">=</span> <span class="mi">6</span>
+
+        <span class="n">xtrans</span><span class="p">,</span> <span class="n">ytrans</span> <span class="o">=</span> <span class="n">Lx</span><span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">Ly</span><span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mf">0.75</span><span class="p">)</span>  <span class="c1"># translation</span>
+        <span class="n">xrotat</span><span class="p">,</span> <span class="n">yrotat</span> <span class="o">=</span> <span class="n">DM</span><span class="p">(</span><span class="n">xtrans</span><span class="p">,</span><span class="n">ytrans</span><span class="p">,</span><span class="o">-</span><span class="n">ψ</span><span class="p">);</span>      <span class="c1"># rotation</span>
+        <span class="n">Vin1</span> <span class="o">=</span> <span class="n">myPDF</span><span class="p">(</span><span class="n">xrotat</span><span class="p">,</span><span class="n">yrotat</span><span class="p">)</span>                 <span class="c1"># value 1</span>
+        
+        <span class="n">xtrans</span><span class="p">,</span> <span class="n">ytrans</span> <span class="o">=</span> <span class="n">Lx</span><span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">Ly</span><span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mf">0.25</span><span class="p">)</span>  <span class="c1"># translation</span>
+        <span class="n">xrotat</span><span class="p">,</span> <span class="n">yrotat</span> <span class="o">=</span> <span class="n">DM</span><span class="p">(</span><span class="n">xtrans</span><span class="p">,</span><span class="n">ytrans</span><span class="p">,</span> <span class="n">ψ</span><span class="p">);</span>      <span class="c1"># rotation</span>
+        <span class="n">Vin2</span> <span class="o">=</span> <span class="n">myPDF</span><span class="p">(</span><span class="n">xrotat</span><span class="p">,</span> <span class="n">yrotat</span><span class="p">)</span>                <span class="c1"># value 2</span>
+        <span class="n">α</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="k">return</span> <span class="n">α</span><span class="o">*</span><span class="n">Vin1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">α</span><span class="p">)</span><span class="o">*</span><span class="n">Vin2</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">C_Line</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>                              <span class="c1"># set up Lagrange trial functions</span>
+    <span class="n">px</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">mx</span><span class="p">);</span>  <span class="n">py</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">my</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">mx</span><span class="p">):</span> <span class="n">px</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">px</span><span class="p">[</span><span class="n">ix</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span>
+    <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">my</span><span class="p">):</span> <span class="n">py</span><span class="p">[</span><span class="n">iy</span><span class="p">]</span> <span class="o">=</span> <span class="n">py</span><span class="p">[</span><span class="n">iy</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span>    
+    <span class="n">CL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">px</span><span class="p">,</span><span class="n">py</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CL</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mx</span><span class="o">*</span><span class="n">my</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">setup_FEM_B</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+    <span class="n">mx</span><span class="p">,</span><span class="n">my</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mx</span><span class="o">*</span><span class="n">my</span><span class="p">);</span>              <span class="c1"># initialise empty array C</span>
+    <span class="k">for</span> <span class="n">jx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mx</span><span class="p">):</span>                        
+        <span class="k">for</span> <span class="n">jy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">my</span><span class="p">):</span>                        
+            <span class="n">CL</span> <span class="o">=</span> <span class="n">C_Line</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span> <span class="n">xs</span><span class="p">[</span><span class="n">jx</span><span class="p">,</span><span class="n">jy</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="n">jx</span><span class="p">,</span><span class="n">jy</span><span class="p">])</span>
+            <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">C</span><span class="p">,</span><span class="n">CL</span><span class="p">))</span>                   <span class="c1"># build C-matrix with the shape function values at the FEM-points   </span>
+    <span class="n">α</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mx</span><span class="o">*</span><span class="n">my</span><span class="p">))</span>      <span class="c1"># α = evaluated shape functions </span>
+    <span class="k">return</span> <span class="n">α</span>
+
+<span class="k">def</span> <span class="nf">interpolateFEM</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span><span class="n">qx</span><span class="p">,</span><span class="n">qy</span><span class="p">,</span><span class="n">α</span><span class="p">):</span>
+    <span class="n">kx</span> <span class="o">=</span> <span class="n">qx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">ky</span> <span class="o">=</span> <span class="n">qy</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">Vip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">qx</span><span class="p">)</span>                         <span class="c1"># initialise output values</span>
+    <span class="k">for</span> <span class="n">jx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kx</span><span class="p">):</span>                            <span class="c1"># run through the output grid</span>
+        <span class="k">for</span> <span class="n">jy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ky</span><span class="p">):</span>
+            <span class="n">H</span> <span class="o">=</span> <span class="n">C_Line</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span> <span class="n">qx</span><span class="p">[</span><span class="n">jx</span><span class="p">,</span><span class="n">jy</span><span class="p">],</span> <span class="n">qy</span><span class="p">[</span><span class="n">jx</span><span class="p">,</span><span class="n">jy</span><span class="p">])</span> <span class="c1"># get the values of the terms of the shape functions</span>
+            <span class="n">Vip</span><span class="p">[</span><span class="n">jx</span><span class="p">,</span><span class="n">jy</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">α</span><span class="p">,</span><span class="n">H</span><span class="p">)</span>                <span class="c1"># get the interpolated value by scalar product</span>
+    <span class="k">return</span> <span class="n">Vip</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_xy_sample_grid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">gridCase</span><span class="p">,</span><span class="n">frnd</span><span class="o">=</span><span class="mf">0.3</span><span class="p">):</span>    <span class="c1"># setup a grid in th physical(x,y)-domain </span>
+    <span class="n">mx</span><span class="p">,</span><span class="n">my</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="n">gridCase</span><span class="o">==</span><span class="s1">&#39;A&#39;</span><span class="p">:</span>           <span class="c1"># do nothing, return (ξ,ν)-grid</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span>
+    <span class="k">if</span> <span class="n">gridCase</span><span class="o">==</span><span class="s1">&#39;B&#39;</span><span class="p">:</span>           <span class="c1"># add random noise </span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">111</span><span class="p">);</span> <span class="n">u</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">frnd</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">);</span>                                                    
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">222</span><span class="p">);</span> <span class="n">v</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">frnd</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span>
+    <span class="k">if</span> <span class="n">gridCase</span><span class="o">==</span><span class="s1">&#39;C&#39;</span><span class="p">:</span>           <span class="c1"># construct a half pipe</span>
+        <span class="n">r1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">;</span>  <span class="n">r2</span><span class="o">=</span><span class="mf">2.0</span><span class="p">;</span>  <span class="n">dr</span> <span class="o">=</span> <span class="n">r2</span><span class="o">-</span><span class="n">r1</span><span class="p">;</span> 
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r1</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">dr</span><span class="p">;</span>    <span class="n">φ</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">φ</span><span class="p">);</span> <span class="n">v</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">φ</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span> 
+        
+<span class="k">def</span> <span class="nf">run_fem_interpolation</span><span class="p">(</span><span class="n">kx</span><span class="p">,</span><span class="n">ky</span><span class="p">,</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span><span class="n">gridCase</span><span class="p">,</span><span class="n">funcCase</span><span class="p">,</span><span class="n">mapCase</span><span class="p">,</span><span class="n">frnd</span><span class="p">):</span>   <span class="c1"># run through different cases</span>
+    <span class="n">ξp</span><span class="p">,</span> <span class="n">νp</span> <span class="o">=</span> <span class="n">setup_grid</span><span class="p">(</span><span class="n">kx</span><span class="p">,</span><span class="n">ky</span><span class="p">)</span>                        <span class="c1"># setup [0..1][0..1] output grid</span>
+    <span class="n">ξs</span><span class="p">,</span> <span class="n">νs</span> <span class="o">=</span> <span class="n">setup_grid</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">)</span>                        <span class="c1"># setup [0..1][0..1] input  grid </span>
+    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">set_xy_sample_grid</span><span class="p">(</span><span class="n">ξs</span><span class="p">,</span><span class="n">νs</span><span class="p">,</span><span class="n">gridCase</span><span class="p">,</span><span class="n">frnd</span><span class="p">)</span>  <span class="c1"># setup a grid in the physical(x,y)-domain</span>
+    
+    <span class="n">Vξν_p</span> <span class="o">=</span> <span class="n">valueFunction</span><span class="p">(</span><span class="n">ξp</span><span class="p">,</span> <span class="n">νp</span><span class="p">,</span><span class="n">funcCase</span><span class="p">)</span>    <span class="c1"># for TEST only: set the values at output grid  </span>
+    <span class="n">Vξν_s</span> <span class="o">=</span> <span class="n">valueFunction</span><span class="p">(</span><span class="n">ξs</span><span class="p">,</span> <span class="n">νs</span><span class="p">,</span><span class="n">funcCase</span><span class="p">)</span>    <span class="c1"># set the values at the (ξ,ν) sampling points (= FEM points)</span>
+    <span class="n">Vxy_s</span> <span class="o">=</span> <span class="n">valueFunction</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span><span class="n">funcCase</span><span class="p">)</span>    <span class="c1"># set the values at the (x,y) sampling points (= FEM points)</span>
+
+    <span class="k">if</span> <span class="n">mapCase</span><span class="o">==</span><span class="s1">&#39;A&#39;</span><span class="p">:</span>   <span class="c1"># map to regular (ξ,ν) [0..1][0..1]-grid</span>
+        <span class="n">α</span> <span class="o">=</span> <span class="n">setup_FEM_B</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">Vxy_s</span><span class="p">);</span> <span class="n">Vp</span> <span class="o">=</span> <span class="n">interpolateFEM</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span><span class="n">ξp</span><span class="p">,</span><span class="n">νp</span><span class="p">,</span><span class="n">α</span><span class="p">)</span>   <span class="c1"># mapping from (x,y) ---to--&gt; (ξ,ν)</span>
+        <span class="n">grafx_41</span><span class="p">(</span><span class="n">ξp</span><span class="p">,</span><span class="n">νp</span><span class="p">,</span><span class="n">Vξν_p</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">Vxy_s</span><span class="p">,</span> <span class="n">ξp</span><span class="p">,</span><span class="n">νp</span><span class="p">,</span> <span class="n">Vp</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">grafx_div</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ξp</span><span class="p">,</span><span class="n">νp</span><span class="p">,</span><span class="n">Vξν_p</span><span class="p">,</span><span class="n">Vp</span><span class="p">,</span><span class="n">nL</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">mapCase</span><span class="o">==</span><span class="s1">&#39;B&#39;</span><span class="p">:</span>   <span class="c1"># map to the curvilinear (x,y)-FEM-grid</span>
+        <span class="n">α</span> <span class="o">=</span> <span class="n">setup_FEM_B</span><span class="p">(</span><span class="n">ξs</span><span class="p">,</span><span class="n">νs</span><span class="p">,</span><span class="n">xs</span><span class="p">);</span> <span class="n">Xp</span> <span class="o">=</span> <span class="n">interpolateFEM</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span><span class="n">ξp</span><span class="p">,</span><span class="n">νp</span><span class="p">,</span><span class="n">α</span><span class="p">);</span>     <span class="c1"># get all (x,y) by interpolation</span>
+        <span class="n">α</span> <span class="o">=</span> <span class="n">setup_FEM_B</span><span class="p">(</span><span class="n">ξs</span><span class="p">,</span><span class="n">νs</span><span class="p">,</span><span class="n">ys</span><span class="p">);</span> <span class="n">Yp</span> <span class="o">=</span> <span class="n">interpolateFEM</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span><span class="n">ξp</span><span class="p">,</span><span class="n">νp</span><span class="p">,</span><span class="n">α</span><span class="p">);</span>
+        <span class="n">Vxy_p</span> <span class="o">=</span> <span class="n">valueFunction</span><span class="p">(</span><span class="n">Xp</span><span class="p">,</span> <span class="n">Yp</span><span class="p">,</span><span class="n">funcCase</span><span class="p">)</span>                             <span class="c1"># for TEST only: get the &#39;output&#39; values from the function</span>
+        
+        <span class="n">α</span> <span class="o">=</span> <span class="n">setup_FEM_B</span><span class="p">(</span><span class="n">ξs</span><span class="p">,</span><span class="n">νs</span><span class="p">,</span><span class="n">Vxy_s</span><span class="p">);</span> <span class="n">Vp</span> <span class="o">=</span> <span class="n">interpolateFEM</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span><span class="n">ξp</span><span class="p">,</span><span class="n">νp</span><span class="p">,</span><span class="n">α</span><span class="p">)</span>   <span class="c1"># mapping from (ξ,ν) ---to--&gt; (x,y)</span>
+        <span class="n">grafx_41</span><span class="p">(</span><span class="n">ξp</span><span class="p">,</span><span class="n">νp</span><span class="p">,</span><span class="n">Vξν_p</span><span class="p">,</span>  <span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">Vxy_s</span><span class="p">,</span>  <span class="n">Xp</span><span class="p">,</span><span class="n">Yp</span><span class="p">,</span><span class="n">Vp</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+        <span class="n">grafx_div</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">Xp</span><span class="p">,</span><span class="n">Yp</span><span class="p">,</span><span class="n">Vxy_p</span><span class="p">,</span><span class="n">Vp</span><span class="p">,</span><span class="n">nL</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> 
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#========= main ==========================================</span>
+<span class="c1"># kx, ky  :  dimension of output grid</span>
+<span class="c1"># mx, my  :  dimension of the finite element (=observed data) </span>
+<span class="c1"># gridCase:  A := [0..1][0..1];     B := A + random;    C := halfe pipe</span>
+<span class="c1"># funcCase:  A := vertcal lines;    B := circle;        C := 6-hump-camelback;       D := PDF</span>
+<span class="c1"># mapCase :  A := map to (ξ,ν)=[0..1][0..1];            B := map to curvilinear (x,y)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">run_fem_interpolation(kx=10,ky=10,mx=4,my=4, gridCase=&#39;B&#39;, funcCase=&#39;B&#39;, mapCase=&#39;B&#39;,frnd=0.042)</span>
+<span class="sd">&#39;&#39;&#39;</span> <span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="example-half-pipe">
+<h2>Example ‘Half pipe’<a class="headerlink" href="#example-half-pipe" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">half_pipe</span><span class="p">(</span><span class="n">kx</span><span class="p">,</span><span class="n">ky</span><span class="p">,</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">):</span>
+    <span class="n">ξs</span><span class="p">,</span> <span class="n">νs</span> <span class="o">=</span> <span class="n">setup_grid</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">)</span>                  <span class="c1"># setup computational [0..1][0..1] input  grid </span>
+    <span class="n">r1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">;</span>  <span class="n">r2</span><span class="o">=</span><span class="mf">2.0</span><span class="p">;</span>  <span class="n">dr</span> <span class="o">=</span> <span class="n">r2</span><span class="o">-</span><span class="n">r1</span><span class="p">;</span> 
+    <span class="n">r</span><span class="p">,</span>  <span class="n">φ</span>  <span class="o">=</span> <span class="n">r1</span> <span class="o">+</span> <span class="n">νs</span><span class="o">*</span><span class="n">dr</span><span class="p">,</span>  <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">+</span> <span class="n">ξs</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">φ</span><span class="p">),</span> <span class="n">r</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">φ</span><span class="p">)</span>           <span class="c1"># setup (x,y) grid in physical domain</span>
+    
+    <span class="n">ξp</span><span class="p">,</span> <span class="n">νp</span> <span class="o">=</span> <span class="n">setup_grid</span><span class="p">(</span><span class="n">kx</span><span class="p">,</span><span class="n">ky</span><span class="p">)</span>                  <span class="c1"># setup [0..1][0..1] output grid</span>
+    <span class="n">α</span> <span class="o">=</span> <span class="n">setup_FEM_B</span><span class="p">(</span><span class="n">ξs</span><span class="p">,</span><span class="n">νs</span><span class="p">,</span><span class="n">xs</span><span class="p">);</span> <span class="n">Xp</span> <span class="o">=</span> <span class="n">interpolateFEM</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span><span class="n">ξp</span><span class="p">,</span><span class="n">νp</span><span class="p">,</span><span class="n">α</span><span class="p">);</span>        <span class="c1"># &lt;--- get all (x,y) by interpolation</span>
+    <span class="n">α</span> <span class="o">=</span> <span class="n">setup_FEM_B</span><span class="p">(</span><span class="n">ξs</span><span class="p">,</span><span class="n">νs</span><span class="p">,</span><span class="n">ys</span><span class="p">);</span> <span class="n">Yp</span> <span class="o">=</span> <span class="n">interpolateFEM</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span><span class="n">ξp</span><span class="p">,</span><span class="n">νp</span><span class="p">,</span><span class="n">α</span><span class="p">);</span>
+    <span class="n">plot_3</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span><span class="n">Xp</span><span class="p">,</span> <span class="n">Yp</span><span class="p">)</span>
+<span class="c1">#===== main ===================    </span>
+<span class="c1"># half_pipe(kx=15,ky=6,mx=5,my=2)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="python-code-inverse-distance-interpolation">
+<h1><em>Python code: Inverse distance interpolation</em><a class="headerlink" href="#python-code-inverse-distance-interpolation" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_interpolatedValue</span><span class="p">(</span><span class="n">xd</span><span class="p">,</span><span class="n">yd</span><span class="p">,</span><span class="n">Vd</span><span class="p">,</span> <span class="n">xpp</span><span class="p">,</span><span class="n">ypp</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span><span class="n">smoothing</span><span class="p">):</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">xpp</span> <span class="o">-</span> <span class="n">xd</span><span class="p">;</span>   <span class="n">dy</span> <span class="o">=</span> <span class="n">ypp</span> <span class="o">-</span> <span class="n">yd</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="n">p</span> <span class="o">+</span> <span class="n">dy</span><span class="o">**</span><span class="n">p</span> <span class="o">+</span> <span class="n">smoothing</span><span class="o">**</span><span class="n">p</span><span class="p">)</span>         <span class="c1"># distance</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span> <span class="o">&lt;</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">),</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">),</span> <span class="n">dd</span><span class="p">)</span>  <span class="c1"># limit too small distances</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">dd</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">p</span><span class="p">)</span>                                  <span class="c1"># dd = weight = 1.0 / (dd**power)</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">dd</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>                                 <span class="c1"># normalized weights</span>
+    <span class="n">Vi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span><span class="n">Vd</span><span class="p">)</span>                                 <span class="c1"># interpolated value = scalar product &lt;weight, value&gt;</span>
+    <span class="k">return</span> <span class="n">Vi</span>
+
+<span class="k">def</span> <span class="nf">interpolateDistInvers</span><span class="p">(</span><span class="n">xd</span><span class="p">,</span><span class="n">yd</span><span class="p">,</span><span class="n">Vd</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span><span class="n">smoothing</span><span class="p">):</span>
+    <span class="n">nx</span><span class="p">,</span><span class="n">ny</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">VI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>            <span class="c1"># initialize the output with zero</span>
+    <span class="k">for</span> <span class="n">jx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>              <span class="c1"># run through the output grid</span>
+        <span class="k">for</span> <span class="n">jy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">):</span>
+            <span class="n">VI</span><span class="p">[</span><span class="n">jx</span><span class="p">,</span><span class="n">jy</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_interpolatedValue</span><span class="p">(</span><span class="n">xd</span><span class="p">,</span><span class="n">yd</span><span class="p">,</span><span class="n">Vd</span><span class="p">,</span> <span class="n">xp</span><span class="p">[</span><span class="n">jx</span><span class="p">,</span><span class="n">jy</span><span class="p">],</span><span class="n">yp</span><span class="p">[</span><span class="n">jx</span><span class="p">,</span><span class="n">jy</span><span class="p">],</span> <span class="n">power</span><span class="p">,</span><span class="n">smoothing</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">VI</span>
+
+<span class="k">def</span> <span class="nf">run_InvDist_interpolation</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">,</span><span class="n">kx</span><span class="p">,</span><span class="n">ky</span><span class="p">,</span><span class="n">funcCase</span><span class="p">):</span>
+    <span class="c1">#---- generate the &#39;observed&#39; data Vs at (xs,ys) --------</span>
+    <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span> <span class="o">=</span> <span class="n">setup_grid</span><span class="p">(</span><span class="n">kx</span><span class="p">,</span><span class="n">ky</span><span class="p">)</span>                 <span class="c1"># setup [0..1][0..1] output grid</span>
+    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">setup_grid</span><span class="p">(</span><span class="n">mx</span><span class="p">,</span><span class="n">my</span><span class="p">)</span>                 <span class="c1"># setup [0..1][0..1] input  grid (xs,ys)</span>
+    <span class="n">Vs</span>     <span class="o">=</span> <span class="n">valueFunction</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span><span class="n">funcCase</span><span class="p">)</span>    <span class="c1"># set the values at the (xs,ys) grid points</span>
+
+    <span class="c1">#---- change the shape of the sampling points to 1-dim vectors -----------</span>
+    <span class="n">xd</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mx</span><span class="o">*</span><span class="n">my</span><span class="p">)</span>
+    <span class="n">yd</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mx</span><span class="o">*</span><span class="n">my</span><span class="p">)</span>
+    <span class="n">Vd</span> <span class="o">=</span> <span class="n">Vs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mx</span><span class="o">*</span><span class="n">my</span><span class="p">)</span>
+    
+    <span class="c1">#---- input: set interpolation parameters</span>
+    <span class="n">power</span><span class="o">=</span><span class="mf">2.0</span><span class="p">;</span>   <span class="n">smoothing</span><span class="o">=</span><span class="mf">0.1</span>
+    
+    <span class="c1">#---- run through the grid and get the interpolated value at each point</span>
+    <span class="n">Vp</span> <span class="o">=</span> <span class="n">interpolateDistInvers</span><span class="p">(</span><span class="n">xd</span><span class="p">,</span><span class="n">yd</span><span class="p">,</span><span class="n">Vd</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span><span class="n">smoothing</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">Vp</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">#====== main ================</span>
+<span class="sd">fig = plt.figure(figsize=(22,7))</span>
+<span class="sd">ax = plt.subplot(1, 3, 1);  xs,ys,xp,yp,Vp = run_InvDist_interpolation(mx=5,my=5,kx=35,ky=35,funcCase=&#39;B&#39;);  plot_IDI(ax,xs,ys,xp,yp,Vp,Title=&#39;Inverse distances: Circles&#39;)</span>
+<span class="sd">ax = plt.subplot(1, 3, 2);  xs,ys,xp,yp,Vp = run_InvDist_interpolation(mx=5,my=5,kx=35,ky=35,funcCase=&#39;C&#39;);  plot_IDI(ax,xs,ys,xp,yp,Vp,Title=&#39;Inverse distances: 6-hump-camelback&#39;)</span>
+<span class="sd">ax = plt.subplot(1, 3, 3);  xs,ys,xp,yp,Vp = run_InvDist_interpolation(mx=5,my=5,kx=35,ky=35,funcCase=&#39;D&#39;);  plot_IDI(ax,xs,ys,xp,yp,Vp,Title=&#39;Inverse distances: Bi-modal PDF&#39;)</span>
+<span class="sd">plt.show() </span>
+<span class="sd">&#39;&#39;&#39;</span> <span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="graphics">
+<h1><em>Graphics</em><a class="headerlink" href="#graphics" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_IDI</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">Vp</span><span class="p">,</span><span class="n">Title</span><span class="p">):</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;#009999&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">Vp</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">redu</span><span class="p">(</span><span class="n">Vp</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">);</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">Title</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;datalim&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_3</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">,</span><span class="n">Xfem</span><span class="p">,</span> <span class="n">Yfem</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span> 
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span>
+    <span class="n">myCmap</span> <span class="o">=</span> <span class="n">mclr</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="s1">&#39;white&#39;</span><span class="p">])</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">((</span><span class="mf">0.144</span><span class="p">,</span> <span class="mf">0.176</span><span class="p">,</span> <span class="mf">0.255</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">,</span> <span class="n">redu</span><span class="p">(</span><span class="n">Xs</span><span class="p">),</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;chartreuse&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">myCmap</span><span class="p">);</span> <span class="c1">#,shading=&#39;gouraud&#39;</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;What the sampling points can see&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;datalim&#39;</span><span class="p">)</span>  
+    
+    <span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">))</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">Xfem</span><span class="p">,</span> <span class="n">Yfem</span><span class="p">,</span> <span class="n">redu</span><span class="p">(</span><span class="n">Xfem</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Reconstruction - FEM interpolated grid&#39;</span><span class="p">,</span>  <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;datalim&#39;</span><span class="p">)</span>  
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">grafx_41</span><span class="p">(</span><span class="n">xp0</span><span class="p">,</span><span class="n">yp0</span><span class="p">,</span><span class="n">vp0</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">vs</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">vp</span><span class="p">,</span><span class="n">nL</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">kx</span><span class="p">,</span><span class="n">ky</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">mx</span><span class="p">,</span><span class="n">my</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;fast&#39;</span><span class="p">):</span>                 <span class="c1"># fivethirtyeight </span>
+        <span class="n">nm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">vp0</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">vp0</span><span class="p">))</span>
+        <span class="c1">#if 1==1:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span> <span class="c1">#sharey=True,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">((</span><span class="mf">0.144</span><span class="p">,</span> <span class="mf">0.176</span><span class="p">,</span> <span class="mf">0.255</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xp0</span><span class="p">,</span><span class="n">yp0</span><span class="p">,</span><span class="n">redu</span><span class="p">(</span><span class="n">vp0</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="n">nm</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+        <span class="n">CS</span> <span class="o">=</span> <span class="n">ax0</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xp0</span><span class="p">,</span><span class="n">yp0</span><span class="p">,</span><span class="n">vp0</span><span class="p">,</span><span class="n">nL</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="n">nm</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">);</span>  <span class="n">ax0</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Test function on &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kx</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;*&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ky</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; points&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">((</span><span class="mf">0.144</span><span class="p">,</span> <span class="mf">0.176</span><span class="p">,</span> <span class="mf">0.255</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+        <span class="n">myCmap</span> <span class="o">=</span> <span class="n">mclr</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="s1">&#39;white&#39;</span><span class="p">])</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">redu</span><span class="p">(</span><span class="n">vs</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="n">myCmap</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;chartreuse&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.99</span><span class="p">)</span>
+        <span class="n">CS</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">vs</span><span class="p">,</span><span class="n">nL</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">);</span>  <span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;chartreuse&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Test function on &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;*&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">my</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; red points&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+        
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">((</span><span class="mf">0.144</span><span class="p">,</span> <span class="mf">0.176</span><span class="p">,</span> <span class="mf">0.255</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">redu</span><span class="p">(</span><span class="n">vp</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="n">nm</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">CS</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">vp</span><span class="p">,</span><span class="n">nL</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="n">nm</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">);</span>  <span class="n">ax2</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;re-Interpolation to &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kx</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;*&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ky</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; points&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">grafx_div</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">vp0</span><span class="p">,</span><span class="n">vp1</span><span class="p">,</span><span class="n">nL</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">kx</span><span class="p">,</span><span class="n">ky</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">mx</span><span class="p">,</span><span class="n">my</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">vDiff</span> <span class="o">=</span> <span class="p">(</span><span class="n">vp1</span><span class="o">-</span><span class="n">vp0</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">vp0</span><span class="p">)</span>
+    <span class="n">nm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">vp0</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">vp0</span><span class="p">))</span>
+    <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;fast&#39;</span><span class="p">):</span>                 <span class="c1"># fivethirtyeight </span>
+        <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span> <span class="c1">#sharey=True,</span>
+        
+        <span class="n">ax0</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">redu</span><span class="p">(</span><span class="n">vp0</span><span class="p">),</span><span class="n">norm</span><span class="o">=</span><span class="n">nm</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">CS</span> <span class="o">=</span> <span class="n">ax0</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">vp0</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="n">nm</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>  <span class="n">ax0</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;V0: analytic function on &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kx</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;*&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ky</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; points&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+        
+        <span class="n">ax1</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">redu</span><span class="p">(</span><span class="n">vp1</span><span class="p">),</span><span class="n">norm</span><span class="o">=</span><span class="n">nm</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">CS</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">vp1</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="n">nm</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>  <span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;V1: interpolated from &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mx</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;*&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">my</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; to &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kx</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;*&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ky</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+        
+        <span class="n">ax2</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span> <span class="n">redu</span><span class="p">(</span><span class="n">vDiff</span><span class="p">),</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+        <span class="n">CS</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">vDiff</span><span class="p">,</span><span class="n">nL</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>  <span class="n">ax2</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Relative difference (v1 - v0)/v0 &#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./source\C_technical_manual"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../B_user_manual/cfd-02-body-fitted-grid-genereation-python.html" title="previous page">Python code for a terrain-following grid</a>
+    <a class='right-next' id="next-link" href="cfd-03-grids-for-airfoils.html" title="next page">Create your own NACA airfoil profile</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Peter Schuhmacher (PhD), Nikola Cihoric (MD)<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
